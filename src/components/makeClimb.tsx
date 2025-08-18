@@ -1,5 +1,5 @@
 'use client';
-import type {Climb} from "@/lib/types";  
+import type {Climb} from "@/app/lib/types";  
 
 
 export default function MakeClimb() {
