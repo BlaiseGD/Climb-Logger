@@ -1,3 +1,4 @@
+import MakeClimb from "@/components/makeClimb";
 import Navbar from "@/components/navbar/index"
 
 export default function Home() {
@@ -5,7 +6,7 @@ export default function Home() {
     <div>
       <main>
         <Navbar/>
-        <h1>Hello world</h1>
+        <MakeClimb/>
       </main>
     </div>
   );
