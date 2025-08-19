@@ -1,4 +1,4 @@
-
+import Login from "./login";
 //if no account in database, prompt and create one
 //if account exists, show profile with username, email, and logout button
 //logout button will clear session and redirect to login page
@@ -8,7 +8,7 @@ export default function Profile(){
             <p>Username</p>
             <img className="max-w-[50px] h-auto object-contain rounded-full" src="/userPhotos/pfp.jpg"></img>
             <p>Email</p>
-            <p>Logout</p>
+            <Login/>
         </div>
     );
 }

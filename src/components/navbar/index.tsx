@@ -3,6 +3,7 @@ import Link from "next/link";
 import {useState, lazy, Suspense} from "react";
 
 const LazyLoadClimbRewind = lazy(() => import("./climbRewindBtn"));
+const LazyLoadProfile = lazy(() => import("./profile"));
 
 export default function Navbar(){
     /* 
@@ -13,23 +14,34 @@ export default function Navbar(){
     about us <a>
     */
    const [showClimbRewind, setShowClimbRewind] = useState(false);
+   const [showProfile, setShowProfile] = useState(false);
     return(
         <nav className="flex justify-center align-top border-amber-200 border-b-4 bg-purple-500 p-2">
             <div className="inline-flex gap-[10px]">
-                <p>Your Profile</p>
+                <button onClick={() => setShowProfile(true)}>Profile</button>
+                {showProfile && (
+                    <div className="relative">
+                        <Suspense fallback={<div>Loading..</div>}>
+                            <div className="absolute py-10 w-full h-full z-50 opacity-90">
+                            <button className="bg-red-600" onClick={() => setShowProfile(false)}>X</button>
+                            <LazyLoadProfile/>
+                            </div>
+                        </Suspense>
+                    </div>
+                )}
                 <button onClick={() =>setShowClimbRewind(true)}>Climb Rewind</button>
                 {showClimbRewind && (
                     <div className="relative">
                     <Suspense fallback={<div>Loading..</div>}>
                         <div className="absolute py-10 w-full h-full z-50 opacity-90">
-                        <button onClick={() => setShowClimbRewind(false)}>X</button>
+                        <button className="bg-red-600" onClick={() => setShowClimbRewind(false)}>X</button>
                         <LazyLoadClimbRewind/>
                         </div>
                     </Suspense>
                     </div>
                 )}
                 <Link href="/settings">Settings</Link>
-                <p>About Us</p>
+                <Link href="/aboutUs">About Us</Link>
             </div>
         </nav>
         
